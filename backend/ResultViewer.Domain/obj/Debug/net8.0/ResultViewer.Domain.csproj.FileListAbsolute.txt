@@ -1,0 +1,11 @@
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\bin\Debug\net8.0\ResultViewer.Domain.deps.json
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\bin\Debug\net8.0\ResultViewer.Domain.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\bin\Debug\net8.0\ResultViewer.Domain.pdb
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ResultViewer.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ResultViewer.Domain.AssemblyInfoInputs.cache
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ResultViewer.Domain.AssemblyInfo.cs
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ResultViewer.Domain.csproj.CoreCompileInputs.cache
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ResultViewer.Domain.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\refint\ResultViewer.Domain.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ResultViewer.Domain.pdb
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ref\ResultViewer.Domain.dll

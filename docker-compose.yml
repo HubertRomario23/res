@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # ---------- SQL Server ----------
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: resultviewer-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Your_Strong_Pwd!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+  # ---------- .NET API ----------
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: resultviewer-api
+    depends_on:
+      - sqlserver
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__SqlServer=Server=sqlserver,1433;Database=ResultViewer;User Id=sa;Password=Your_Strong_Pwd!;TrustServerCertificate=true;MultipleActiveResultSets=true
+      - NightBatch__RootPath=/data/nightbatch
+      - Archive__RootPath=/data/archive
+    ports:
+      - "5000:5000"
+    volumes:
+      - nightbatch-data:/data/nightbatch
+      - archive-data:/data/archive
+
+  # ---------- Vue Frontend ----------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: resultviewer-frontend
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+
+volumes:
+  sqlserver-data:
+  nightbatch-data:
+  archive-data:

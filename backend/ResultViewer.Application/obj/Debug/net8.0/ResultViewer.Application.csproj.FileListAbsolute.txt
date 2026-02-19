@@ -1,0 +1,15 @@
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.csproj.AssemblyReference.cache
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.AssemblyInfoInputs.cache
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.AssemblyInfo.cs
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.csproj.CoreCompileInputs.cache
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\bin\Debug\net8.0\ResultViewer.Application.deps.json
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\bin\Debug\net8.0\ResultViewer.Application.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\bin\Debug\net8.0\ResultViewer.Application.pdb
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\bin\Debug\net8.0\ResultViewer.Domain.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\bin\Debug\net8.0\ResultViewer.Domain.pdb
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultVi.60FED447.Up2Date
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\refint\ResultViewer.Application.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.pdb
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ref\ResultViewer.Application.dll
