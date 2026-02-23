@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ResultViewer.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4120a8d4c9b9a607736f99de6e830f73c3fdfef")]
 [assembly: System.Reflection.AssemblyProductAttribute("ResultViewer.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ResultViewer.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

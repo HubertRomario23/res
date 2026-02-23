@@ -64,26 +64,62 @@
             <option value="Skipped">Skipped</option>
           </select>
         </div>
-        <table v-if="filteredResults.length" class="data-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Test Name</th>
-              <th>Result</th>
-              <th>Duration</th>
-              <th>Error Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(r, i) in filteredResults" :key="r.id">
-              <td class="num">{{ i + 1 }}</td>
-              <td>{{ r.testName }}</td>
-              <td :class="resultClass(r.result)">{{ r.result }}</td>
-              <td class="mono">{{ formatDuration(r.duration) }}</td>
-              <td class="error-msg">{{ r.errorMessage || '—' }}</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div v-if="groupedResults.length" class="feature-accordion">
+          <div v-for="group in groupedResults" :key="group.feature" class="feature-group">
+            <!-- Feature header (click to expand/collapse) -->
+            <div class="feature-header" @click="toggleFeature(group.feature)">
+              <span class="feature-toggle">{{ expandedFeatures.has(group.feature) ? '▼' : '►' }}</span>
+              <span class="feature-name">{{ group.feature }}</span>
+              <span class="feature-counts">
+                <span class="count-total">{{ group.testCount }} tests</span>
+                <span class="count-scenarios">{{ group.scenarios.length }} scenarios</span>
+                <span v-if="group.passed" class="count-passed">{{ group.passed }} passed</span>
+                <span v-if="group.failed" class="count-failed">{{ group.failed }} failed</span>
+                <span v-if="group.skipped" class="count-skipped">{{ group.skipped }} skipped</span>
+              </span>
+            </div>
+
+            <!-- Scenarios under this feature (visible when expanded) -->
+            <div v-if="expandedFeatures.has(group.feature)" class="scenarios-container">
+              <div v-for="scenario in group.scenarios" :key="scenario.name" class="scenario-group">
+                <!-- Scenario header -->
+                <div class="scenario-header" @click="toggleScenario(group.feature + '::' + scenario.name)">
+                  <span class="scenario-toggle">{{ expandedScenarios.has(group.feature + '::' + scenario.name) ? '▼' : '►' }}</span>
+                  <span class="scenario-name">{{ scenario.name }}</span>
+                  <span class="scenario-counts">
+                    <span v-if="scenario.tests.length > 1" class="count-variants">{{ scenario.tests.length }} variants</span>
+                    <span :class="scenarioResultClass(scenario)">{{ scenarioResultLabel(scenario) }}</span>
+                  </span>
+                </div>
+
+                <!-- Test cases under this scenario -->
+                <div v-if="expandedScenarios.has(group.feature + '::' + scenario.name)" class="test-cases">
+                  <table class="data-table test-cases-table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>{{ scenario.tests.length > 1 ? 'Parameters' : 'Test Name' }}</th>
+                        <th>Result</th>
+                        <th>Duration</th>
+                        <th>Error Message</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(t, i) in scenario.tests" :key="t.id">
+                        <td class="num">{{ i + 1 }}</td>
+                        <td>{{ t.displayName }}</td>
+                        <td :class="resultClass(t.result)">{{ t.result }}</td>
+                        <td class="mono">{{ formatDuration(t.duration) }}</td>
+                        <td class="error-msg">{{ t.errorMessage || '—' }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div v-else class="status">No test results match the current filter.</div>
       </div>
 
@@ -140,7 +176,7 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, reactive, onMounted } from 'vue'
 import { useRunsStore } from '../stores/runsStore'
 
 const props = defineProps({
@@ -157,6 +193,30 @@ const resultSearch = ref('')
 const resultFilter = ref('')
 const measurementSearch = ref('')
 const measurementResultFilter = ref('')
+const expandedFeatures = reactive(new Set())
+const expandedScenarios = reactive(new Set())
+
+/**
+ * Extract feature name, scenario name, and display name from the full qualified test name.
+ * e.g. "Philips.FAST...B_AcceptanceViewingFeature.Image_022_Test(\"Lat\",\"ref1\")"
+ *   → feature: "B_AcceptanceViewingFeature"
+ *   → scenario: "Image_022_Test"
+ *   → displayName: "(\"Lat\",\"ref1\")"   (or full method name if no params)
+ */
+function parseTestName(fullName) {
+  const parenIdx = fullName.indexOf('(')
+  const basePart = parenIdx >= 0 ? fullName.substring(0, parenIdx) : fullName
+  const paramPart = parenIdx >= 0 ? fullName.substring(parenIdx) : ''
+
+  const segments = basePart.split('.')
+  if (segments.length >= 2) {
+    const feature = segments[segments.length - 2]
+    const scenarioName = segments[segments.length - 1]
+    const displayName = paramPart || scenarioName
+    return { feature, scenario: scenarioName, displayName }
+  }
+  return { feature: 'Other', scenario: fullName, displayName: fullName }
+}
 
 const filteredResults = computed(() => {
   if (!run.value?.indexedResults) return []
@@ -166,6 +226,74 @@ const filteredResults = computed(() => {
     return matchName && matchResult
   })
 })
+
+const groupedResults = computed(() => {
+  const results = filteredResults.value
+  const featureMap = new Map()
+
+  for (const r of results) {
+    const { feature, scenario, displayName } = parseTestName(r.testName)
+
+    if (!featureMap.has(feature)) {
+      featureMap.set(feature, { feature, scenarioMap: new Map(), testCount: 0, passed: 0, failed: 0, skipped: 0 })
+    }
+    const fg = featureMap.get(feature)
+    fg.testCount++
+    if (r.result === 'Passed') fg.passed++
+    else if (r.result === 'Failed') fg.failed++
+    else fg.skipped++
+
+    if (!fg.scenarioMap.has(scenario)) {
+      fg.scenarioMap.set(scenario, { name: scenario, tests: [], passed: 0, failed: 0, skipped: 0 })
+    }
+    const sg = fg.scenarioMap.get(scenario)
+    sg.tests.push({ ...r, displayName })
+    if (r.result === 'Passed') sg.passed++
+    else if (r.result === 'Failed') sg.failed++
+    else sg.skipped++
+  }
+
+  // Convert scenarioMaps to sorted arrays and sort features
+  return Array.from(featureMap.values())
+    .map(fg => ({
+      ...fg,
+      scenarios: Array.from(fg.scenarioMap.values()).sort((a, b) => a.name.localeCompare(b.name))
+    }))
+    .sort((a, b) => a.feature.localeCompare(b.feature))
+})
+
+function toggleFeature(feature) {
+  if (expandedFeatures.has(feature)) {
+    expandedFeatures.delete(feature)
+  } else {
+    expandedFeatures.add(feature)
+  }
+}
+
+function toggleScenario(key) {
+  if (expandedScenarios.has(key)) {
+    expandedScenarios.delete(key)
+  } else {
+    expandedScenarios.add(key)
+  }
+}
+
+function scenarioResultLabel(scenario) {
+  if (scenario.failed > 0) return 'Failed'
+  if (scenario.skipped > 0 && scenario.passed === 0) return 'Skipped'
+  if (scenario.passed === scenario.tests.length) return 'Passed'
+  return 'Mixed'
+}
+
+function scenarioResultClass(scenario) {
+  const label = scenarioResultLabel(scenario)
+  return {
+    'result-passed': label === 'Passed',
+    'result-failed': label === 'Failed',
+    'result-skipped': label === 'Skipped',
+    'result-mixed': label === 'Mixed'
+  }
+}
 
 const systemInfoEntries = computed(() => {
   if (!run.value?.systemInfo) return {}
@@ -352,6 +480,138 @@ onMounted(() => store.fetchRun(props.host, props.pdc, props.runId))
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Feature Accordion */
+.feature-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.feature-group {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.feature-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  background: #f5f7f5;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.feature-header:hover {
+  background: #eaf5ed;
+}
+.feature-toggle {
+  font-size: 0.75rem;
+  color: #888;
+  width: 1rem;
+  flex-shrink: 0;
+}
+.feature-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+  flex: 1;
+}
+.feature-counts {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.count-total {
+  background: #e0e0e0;
+  color: #555;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+}
+.count-passed {
+  color: #27ae60;
+}
+.count-failed {
+  color: #e74c3c;
+}
+.count-skipped {
+  color: #f39c12;
+}
+.count-scenarios {
+  color: #888;
+}
+.count-variants {
+  color: #888;
+  font-weight: 400;
+}
+
+/* Scenarios inside a feature */
+.scenarios-container {
+  border-top: 1px solid #e0e0e0;
+}
+.scenario-group {
+  border-bottom: 1px solid #efefef;
+}
+.scenario-group:last-child {
+  border-bottom: none;
+}
+.scenario-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem 0.55rem 2.2rem;
+  background: #fafcfa;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.scenario-header:hover {
+  background: #f0f7f2;
+}
+.scenario-toggle {
+  font-size: 0.65rem;
+  color: #aaa;
+  width: 0.8rem;
+  flex-shrink: 0;
+}
+.scenario-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #444;
+  flex: 1;
+}
+.scenario-counts {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.result-skipped { color: #f39c12; font-weight: 600; }
+.result-mixed { color: #8e44ad; font-weight: 600; }
+
+/* Test cases table inside a scenario */
+.test-cases {
+  padding-left: 2.2rem;
+  background: #fff;
+}
+.test-cases-table {
+  border-top: 1px solid #f0f0f0;
+}
+.test-cases-table th {
+  background: #f8f8f8;
+  font-size: 0.82rem;
+}
+.test-cases-table td {
+  font-size: 0.85rem;
+}
+
+.feature-tests {
+  border-top: 1px solid #e0e0e0;
+}
+.feature-tests th {
+  background: #fafafa;
 }
 
 /* System Info */
