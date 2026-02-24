@@ -59,7 +59,7 @@ public class RunQueryServiceTests
                        .ReturnsAsync(true);
 
         _fileSystemMock.Setup(f => f.LoadRawRunAsync("hostA", "pdcA", "run1", It.IsAny<CancellationToken>()))
-                       .ReturnsAsync(new RawRunData("<test-run />", null, null));
+                       .ReturnsAsync(new RawRunData("<test-run />", null, null, null));
 
         var parsed = CreateTestRun();
         _xmlParserMock.Setup(p => p.ParseAsync(It.IsAny<RawRunData>(), "hostA", "pdcA", "run1", It.IsAny<CancellationToken>()))

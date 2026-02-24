@@ -18,6 +18,7 @@ public class TestRun
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public string ImportStatus { get; set; } = "Completed";
     public bool IsDeleted { get; set; } = false;
+    public string? SpecflowLog { get; set; }
 
     public ICollection<TestResult> IndexedResults { get; set; } = new List<TestResult>();
     public SystemInfo? SystemInfo { get; set; }

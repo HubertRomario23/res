@@ -13,5 +13,6 @@ public interface IFileSystemService
 public record RawRunData(
     string TestResultXml,
     string? SystemInfoXml,
-    string? SystemFingerPrintXml
+    string? SystemFingerPrintXml,
+    string? SpecflowLog
 );

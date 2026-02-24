@@ -72,10 +72,31 @@ public sealed class TestRunRepository : ITestRunRepository
 
         var totalCount = await query.CountAsync(ct);
 
+        // Use projection to exclude large columns (RawJson, SpecflowLog, RawFingerPrintXml)
+        // This significantly reduces data transfer from SQL Server
         var items = await query
             .OrderByDescending(t => t.StartTime)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
+            .Select(t => new TestRun
+            {
+                Id = t.Id,
+                Host = t.Host,
+                Pdc = t.Pdc,
+                RunId = t.RunId,
+                StartTime = t.StartTime,
+                EndTime = t.EndTime,
+                OverallResult = t.OverallResult,
+                TestCount = t.TestCount,
+                PassedCount = t.PassedCount,
+                FailedCount = t.FailedCount,
+                SkippedCount = t.SkippedCount,
+                ArchivePath = t.ArchivePath,
+                CreatedAt = t.CreatedAt,
+                ImportStatus = t.ImportStatus,
+                IsDeleted = t.IsDeleted
+                // RawJson, SpecflowLog excluded - not needed for list view
+            })
             .ToListAsync(ct);
 
         return (items, totalCount);

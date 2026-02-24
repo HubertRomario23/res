@@ -1,0 +1,279 @@
+2026-02-24 14:09:38.693 +05:30 [INF]  Applying pending EF Core migrations…
+2026-02-24 14:09:39.098 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'Measurement'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:09:39.105 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'SystemInfo'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:09:39.108 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'TestResult'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:09:57.807 +05:30 [FTL]  Application terminated unexpectedly
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No connection could be made because the target machine actively refused it.)
+ ---> System.ComponentModel.Win32Exception (10061): No connection could be made because the target machine actively refused it.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.HistoryRepository.ExistsAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Api\Program.cs:line 56
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:10061,State:0,Class:20
+2026-02-24 14:14:44.776 +05:30 [INF]  Applying pending EF Core migrations…
+2026-02-24 14:14:45.238 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'Measurement'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:14:45.244 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'SystemInfo'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:14:45.248 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'TestResult'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:15:03.919 +05:30 [FTL]  Application terminated unexpectedly
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No connection could be made because the target machine actively refused it.)
+ ---> System.ComponentModel.Win32Exception (10061): No connection could be made because the target machine actively refused it.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.HistoryRepository.ExistsAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Api\Program.cs:line 56
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:10061,State:0,Class:20
+2026-02-24 14:18:34.942 +05:30 [INF]  Applying pending EF Core migrations…
+2026-02-24 14:18:35.334 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'Measurement'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:18:35.338 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'SystemInfo'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:18:35.340 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'TestResult'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:18:35.670 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'Measurement'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:18:35.672 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'SystemInfo'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:18:35.675 +05:30 [WRN]  Entity 'TestRun' has a global query filter defined and is the required end of a relationship with the entity 'TestResult'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-24 14:18:36.080 +05:30 [INF]  Executed DbCommand (340ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE DATABASE [ResultViewer];
+2026-02-24 14:18:36.290 +05:30 [INF]  Executed DbCommand (198ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ResultViewer] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2026-02-24 14:18:36.334 +05:30 [INF]  Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+SELECT 1
+2026-02-24 14:18:36.402 +05:30 [INF]  Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2026-02-24 14:18:36.409 +05:30 [INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+SELECT 1
+2026-02-24 14:18:36.438 +05:30 [INF]  Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-02-24 14:18:36.467 +05:30 [INF]  Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-02-24 14:18:36.490 +05:30 [INF]  Applying migration '20260218140645_InitialCreate'.
+2026-02-24 14:18:36.538 +05:30 [INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE TABLE [TestRuns] (
+    [Id] uniqueidentifier NOT NULL,
+    [Host] nvarchar(256) NOT NULL,
+    [Pdc] nvarchar(256) NOT NULL,
+    [RunId] nvarchar(256) NOT NULL,
+    [StartTime] datetime2 NOT NULL,
+    [EndTime] datetime2 NOT NULL,
+    [OverallResult] nvarchar(64) NOT NULL,
+    [TestCount] int NOT NULL,
+    [PassedCount] int NOT NULL,
+    [FailedCount] int NOT NULL,
+    [SkippedCount] int NOT NULL,
+    [RawJson] nvarchar(max) NOT NULL,
+    [ArchivePath] nvarchar(1024) NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [ImportStatus] nvarchar(64) NOT NULL,
+    [IsDeleted] bit NOT NULL,
+    CONSTRAINT [PK_TestRuns] PRIMARY KEY ([Id])
+);
+2026-02-24 14:18:36.546 +05:30 [INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE TABLE [Measurements] (
+    [Id] uniqueidentifier NOT NULL,
+    [TestName] nvarchar(512) NOT NULL,
+    [MeasurementName] nvarchar(512) NOT NULL,
+    [Result] nvarchar(64) NOT NULL,
+    [MeasurementUnit] nvarchar(64) NULL,
+    [Description] nvarchar(1024) NULL,
+    [MeasuredValue] nvarchar(256) NULL,
+    [SpecErrorUpper] nvarchar(64) NULL,
+    [SpecErrorLower] nvarchar(64) NULL,
+    [SpecWarningUpper] nvarchar(64) NULL,
+    [SpecWarningLower] nvarchar(64) NULL,
+    [TestRunId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Measurements] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Measurements_TestRuns_TestRunId] FOREIGN KEY ([TestRunId]) REFERENCES [TestRuns] ([Id]) ON DELETE CASCADE
+);
+2026-02-24 14:18:36.553 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE TABLE [SystemInfos] (
+    [Id] uniqueidentifier NOT NULL,
+    [SystemName] nvarchar(256) NOT NULL,
+    [STM] nvarchar(64) NOT NULL,
+    [MSIVersion] nvarchar(64) NOT NULL,
+    [PDCVersion] nvarchar(64) NOT NULL,
+    [MonoplaneOrBiplane] nvarchar(64) NOT NULL,
+    [FrontalStandType] nvarchar(128) NOT NULL,
+    [TableType] nvarchar(128) NOT NULL,
+    [TableTopType] nvarchar(128) NOT NULL,
+    [DetectorNameFrontal] nvarchar(128) NOT NULL,
+    [DetectorNameLateral] nvarchar(128) NOT NULL,
+    [SystemType] nvarchar(256) NOT NULL,
+    [ProductFamily] nvarchar(128) NOT NULL,
+    [DetectorType] nvarchar(128) NOT NULL,
+    [LateralStandType] nvarchar(128) NOT NULL,
+    [SystemConfigType] nvarchar(64) NOT NULL,
+    [RawXml] nvarchar(max) NOT NULL,
+    [TestRunId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_SystemInfos] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_SystemInfos_TestRuns_TestRunId] FOREIGN KEY ([TestRunId]) REFERENCES [TestRuns] ([Id]) ON DELETE CASCADE
+);
+2026-02-24 14:18:36.563 +05:30 [INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE TABLE [TestResults] (
+    [Id] uniqueidentifier NOT NULL,
+    [TestName] nvarchar(512) NOT NULL,
+    [Result] nvarchar(64) NOT NULL,
+    [ErrorMessage] nvarchar(4000) NULL,
+    [Duration] time NOT NULL,
+    [TestRunId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_TestResults] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_TestResults_TestRuns_TestRunId] FOREIGN KEY ([TestRunId]) REFERENCES [TestRuns] ([Id]) ON DELETE CASCADE
+);
+2026-02-24 14:18:36.569 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE INDEX [IX_Measurements_TestRunId] ON [Measurements] ([TestRunId]);
+2026-02-24 14:18:36.575 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE UNIQUE INDEX [IX_SystemInfos_TestRunId] ON [SystemInfos] ([TestRunId]);
+2026-02-24 14:18:36.581 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE INDEX [IX_TestResults_TestRunId] ON [TestResults] ([TestRunId]);
+2026-02-24 14:18:36.587 +05:30 [INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE INDEX [IX_TestRuns_CreatedAt] ON [TestRuns] ([CreatedAt]);
+2026-02-24 14:18:36.592 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE UNIQUE INDEX [IX_TestRuns_Host_Pdc_RunId] ON [TestRuns] ([Host], [Pdc], [RunId]);
+2026-02-24 14:18:36.599 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE INDEX [IX_TestRuns_IsDeleted] ON [TestRuns] ([IsDeleted]);
+2026-02-24 14:18:36.604 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE INDEX [IX_TestRuns_OverallResult] ON [TestRuns] ([OverallResult]);
+2026-02-24 14:18:36.610 +05:30 [INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+CREATE INDEX [IX_TestRuns_StartTime] ON [TestRuns] ([StartTime]);
+2026-02-24 14:18:36.630 +05:30 [INF]  Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260218140645_InitialCreate', N'8.0.0');
+2026-02-24 14:18:36.647 +05:30 [INF]  Applying migration '20260223053543_AddRawFingerPrintXml'.
+2026-02-24 14:18:36.668 +05:30 [INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+ALTER TABLE [TestRuns] ADD [RawFingerPrintXml] nvarchar(max) NULL;
+2026-02-24 14:18:36.675 +05:30 [INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260223053543_AddRawFingerPrintXml', N'8.0.0');
+2026-02-24 14:18:36.686 +05:30 [INF]  Applying migration '20260223065307_AddTestResultOutput'.
+2026-02-24 14:18:36.704 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+ALTER TABLE [TestResults] ADD [Output] nvarchar(max) NULL;
+2026-02-24 14:18:36.711 +05:30 [INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260223065307_AddTestResultOutput', N'8.0.0');
+2026-02-24 14:18:36.725 +05:30 [INF]  Applying migration '20260223070429_AddTestRunSpecflowLog'.
+2026-02-24 14:18:36.761 +05:30 [INF]  Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+ALTER TABLE [TestRuns] ADD [SpecflowLog] nvarchar(max) NULL;
+2026-02-24 14:18:36.770 +05:30 [INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260223070429_AddTestRunSpecflowLog', N'8.0.0');
+2026-02-24 14:18:36.782 +05:30 [INF]  Database migration complete.
+2026-02-24 14:18:36.841 +05:30 [INF]  ResultViewer API starting on http://localhost:5267
+2026-02-24 14:18:36.845 +05:30 [DBG]  Hosting starting
+2026-02-24 14:18:36.892 +05:30 [INF]  Now listening on: http://localhost:5267
+2026-02-24 14:18:36.893 +05:30 [INF]  Application started. Press Ctrl+C to shut down.
+2026-02-24 14:18:36.895 +05:30 [INF]  Hosting environment: Development
+2026-02-24 14:18:36.896 +05:30 [INF]  Content root path: C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Api
+2026-02-24 14:18:36.898 +05:30 [DBG]  Hosting started
+2026-02-24 14:19:05.961 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/api/runs/list?page=1&pageSize=20 - null null
+2026-02-24 14:19:05.993 +05:30 [WRN] 773006f3-900d-4507-93a3-9cb9a69ed919 Failed to determine the https port for redirect.
+2026-02-24 14:19:05.995 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 Executing endpoint 'ResultViewer.Api.Controllers.RunsController.GetAllRuns (ResultViewer.Api)'
+2026-02-24 14:19:06.017 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 Route matched with {action = "GetAllRuns", controller = "Runs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRuns(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Threading.CancellationToken) on controller ResultViewer.Api.Controllers.RunsController (ResultViewer.Api).
+2026-02-24 14:19:06.031 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 GET /api/runs/list - Page=1, PageSize=20, Host=null, Pdc=null, Result=null
+2026-02-24 14:19:06.213 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='120']
+SELECT COUNT(*)
+FROM [TestRuns] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit)
+2026-02-24 14:19:06.291 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 Executed DbCommand (27ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='120']
+SELECT [t].[Id], [t].[ArchivePath], [t].[CreatedAt], [t].[EndTime], [t].[FailedCount], [t].[Host], [t].[ImportStatus], [t].[IsDeleted], [t].[OverallResult], [t].[PassedCount], [t].[Pdc], [t].[RawJson], [t].[RunId], [t].[SkippedCount], [t].[SpecflowLog], [t].[StartTime], [t].[TestCount]
+FROM [TestRuns] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [t].[StartTime] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-02-24 14:19:06.305 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 Executing OkObjectResult, writing value of type 'ResultViewer.Application.DTOs.PagedResultDto`1[[ResultViewer.Application.DTOs.TestRunDto, ResultViewer.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-24 14:19:06.343 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 Executed action ResultViewer.Api.Controllers.RunsController.GetAllRuns (ResultViewer.Api) in 319.8138ms
+2026-02-24 14:19:06.348 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 Executed endpoint 'ResultViewer.Api.Controllers.RunsController.GetAllRuns (ResultViewer.Api)'
+2026-02-24 14:19:06.354 +05:30 [INF] 773006f3-900d-4507-93a3-9cb9a69ed919 HTTP GET /api/runs/list responded 200 in 369.8039 ms
+2026-02-24 14:19:06.365 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/api/runs/list?page=1&pageSize=20 - 200 null application/json; charset=utf-8 404.9207ms
+2026-02-24 14:19:18.988 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:18.995 +05:30 [INF] 00-60ed2b68328539c382ffd57d326ebb12-c1e71ebe858de39f-00 HTTP GET / responded 404 in 0.7298 ms
+2026-02-24 14:19:18.999 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 10.4308ms
+2026-02-24 14:19:19.004 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:22.597 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:22.604 +05:30 [INF] 00-b06826ee55400a6d81af76b3616e251f-1804e034189d9643-00 HTTP GET / responded 404 in 0.6708 ms
+2026-02-24 14:19:22.607 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 9.2328ms
+2026-02-24 14:19:22.614 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:22.780 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:22.785 +05:30 [INF] 00-133dfcc94cb9cf2c738afa79f48a8df0-da4e2a35b7c28f33-00 HTTP GET / responded 404 in 0.0628 ms
+2026-02-24 14:19:22.788 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 7.3034ms
+2026-02-24 14:19:22.795 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:23.282 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:23.294 +05:30 [INF] 00-933ada456c068dcaa01ae7698f1c41e5-3f5df8fb4761519d-00 HTTP GET / responded 404 in 0.1284 ms
+2026-02-24 14:19:23.300 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 17.9657ms
+2026-02-24 14:19:23.308 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:23.583 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:23.588 +05:30 [INF] 00-10d600789b644a3c4eab037fd64e032f-5857a41f50912a6f-00 HTTP GET / responded 404 in 0.1005 ms
+2026-02-24 14:19:23.591 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 8.2934ms
+2026-02-24 14:19:23.599 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:24.159 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:24.164 +05:30 [INF] 00-64aff2c35d7246b48a4dffecb62989f8-69c7f84e7f2730aa-00 HTTP GET / responded 404 in 0.0598 ms
+2026-02-24 14:19:24.166 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 6.2741ms
+2026-02-24 14:19:24.170 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:24.539 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:24.543 +05:30 [INF] 00-74ec4f260cca67adb057f5c811c5c025-7f01c289c8448c3e-00 HTTP GET / responded 404 in 0.0785 ms
+2026-02-24 14:19:24.548 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 8.7582ms
+2026-02-24 14:19:24.554 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:24.866 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:24.874 +05:30 [INF] 00-e513bdb9f40ba77bd7c90ba6897f3602-d28c5d5193fd4d5a-00 HTTP GET / responded 404 in 0.0632 ms
+2026-02-24 14:19:24.884 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 17.519ms
+2026-02-24 14:19:24.898 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:25.030 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:25.034 +05:30 [INF] 00-e03a39f9e1d3a8714c73bcfdc7c38e34-ff87486b24c14d54-00 HTTP GET / responded 404 in 0.0632 ms
+2026-02-24 14:19:25.036 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 6.3116ms
+2026-02-24 14:19:25.042 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404
+2026-02-24 14:19:44.821 +05:30 [INF]  Request starting HTTP/1.1 GET http://localhost:5267/ - null null
+2026-02-24 14:19:44.830 +05:30 [INF] 00-79494b9b129aedd68e6fe4617fea53a6-7ac51cb65afc4bd8-00 HTTP GET / responded 404 in 0.0663 ms
+2026-02-24 14:19:44.838 +05:30 [INF]  Request finished HTTP/1.1 GET http://localhost:5267/ - 404 0 null 17.0415ms
+2026-02-24 14:19:44.846 +05:30 [INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/, Response status code: 404

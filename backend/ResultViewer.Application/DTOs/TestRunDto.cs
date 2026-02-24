@@ -16,6 +16,7 @@ public record TestRunDto
     public string RawJson { get; init; } = string.Empty;
     public string? ArchivePath { get; init; }
     public DateTime CreatedAt { get; init; }
+    public string? SpecflowLog { get; init; }
     public IReadOnlyList<TestResultDto> IndexedResults { get; init; } = [];
     public SystemInfoDto? SystemInfo { get; init; }
     public IReadOnlyList<MeasurementDto> Measurements { get; init; } = [];

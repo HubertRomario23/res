@@ -1,9 +1,4 @@
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_ResultViewer.Tests
-C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.csproj.AssemblyReference.cache
-C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.AssemblyInfoInputs.cache
-C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.AssemblyInfo.cs
-C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.csproj.CoreCompileInputs.cache
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\bin\Debug\net8.0\testhost.dll
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\bin\Debug\net8.0\testhost.exe
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\bin\Debug\net8.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
@@ -151,6 +146,12 @@ C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\bin\Debug\net
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\bin\Debug\net8.0\ResultViewer.Application.pdb
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\bin\Debug\net8.0\ResultViewer.Infrastructure.pdb
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\bin\Debug\net8.0\ResultViewer.Domain.pdb
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.csproj.AssemblyReference.cache
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.AssemblyInfoInputs.cache
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.AssemblyInfo.cs
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.csproj.CoreCompileInputs.cache
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.sourcelink.json
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultVi.2ACD26B1.Up2Date
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\ResultViewer.Tests.dll
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Tests\obj\Debug\net8.0\refint\ResultViewer.Tests.dll

@@ -19,8 +19,9 @@
     <div v-else-if="store.error" class="status error">{{ store.error }}</div>
 
     <!-- Table -->
-    <table v-else-if="store.runs.length" class="runs-table">
-      <thead>
+    <div v-else-if="store.runs.length" class="table-wrapper">
+      <table class="runs-table">
+        <thead>
         <tr>
           <th>Host</th>
           <th>PDC</th>
@@ -50,6 +51,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <div v-else class="status">No test runs found.</div>
 
@@ -118,19 +120,28 @@ onMounted(() => store.fetchRuns())
 </script>
 
 <style scoped>
+.runs-list {
+  width: 100%;
+  max-width: 100%;
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+}
 .runs-list h1 { margin-bottom: 1rem; }
 
 .link-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
 .link-input {
-  flex: 1;
+  flex: 1 1 300px;
+  min-width: 200px;
   padding: 0.6rem;
   border: 2px solid #42b883;
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 .link-input:focus { outline: none; border-color: #2e9d6e; }
 .link-error {
@@ -145,22 +156,40 @@ onMounted(() => store.fetchRuns())
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
+  white-space: nowrap;
 }
-.btn-primary { background: #42b883; color: #fff; }
+.btn-primary { background: #1a7a4c; color: #fff; }
+.btn-primary:hover { background: #156040; }
 
 .status { padding: 2rem; text-align: center; color: #666; }
 .error { color: #e74c3c; }
 
+.table-wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  flex: 1;
+  max-height: calc(100vh - 280px);
+}
+
 .runs-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
+  font-size: 0.9rem;
 }
 .runs-table th, .runs-table td {
-  padding: 0.6rem 0.8rem;
+  padding: 0.6rem 0.75rem;
   border-bottom: 1px solid #eee;
   text-align: left;
+  white-space: nowrap;
 }
-.runs-table th { background: #f5f5f5; font-weight: 600; }
+.runs-table th { 
+  background: #f5f5f5; 
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
 .run-row { cursor: pointer; }
 .run-row:hover { background: #f0faf5; }
 
@@ -169,9 +198,10 @@ onMounted(() => store.fetchRuns())
 
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-top: 1.5rem;
 }
 .pagination button {

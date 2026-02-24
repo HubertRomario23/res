@@ -66,6 +66,13 @@ public sealed class XmlParserService : IXmlParserService
             }
         }
 
+        // ── 4) Store SpecflowLog ──
+        if (!string.IsNullOrEmpty(rawData.SpecflowLog))
+        {
+            testRun.SpecflowLog = rawData.SpecflowLog;
+            _logger.LogInformation("Stored SpecflowLogging.log ({Length} chars)", rawData.SpecflowLog.Length);
+        }
+
         _logger.LogInformation(
             "Parsed TestRun: {TestCount} tests ({Passed} passed, {Failed} failed), " +
             "SystemInfo={HasSysInfo}, Measurements={MeasCount}",
@@ -116,13 +123,22 @@ public sealed class XmlParserService : IXmlParserService
             testRun.IndexedResults.Add(result);
         }
 
-        // If root counters were missing, compute from test cases
-        if (testRun.TestCount == 0 && testRun.IndexedResults.Count > 0)
+        // If root counters were missing or zero, compute from test cases
+        if (testRun.IndexedResults.Count > 0)
         {
-            testRun.TestCount = testRun.IndexedResults.Count;
-            testRun.PassedCount = testRun.IndexedResults.Count(r => r.Result == "Passed");
-            testRun.FailedCount = testRun.IndexedResults.Count(r => r.Result == "Failed");
-            testRun.SkippedCount = testRun.TestCount - testRun.PassedCount - testRun.FailedCount;
+            var computedTotal = testRun.IndexedResults.Count;
+            var computedPassed = testRun.IndexedResults.Count(r => r.Result == "Passed" || r.Result == "Success");
+            var computedFailed = testRun.IndexedResults.Count(r => r.Result == "Failed" || r.Result == "Failure" || r.Result == "Error");
+            var computedSkipped = computedTotal - computedPassed - computedFailed;
+
+            // Use computed values if they're more accurate (i.e., if XML attributes were 0)
+            if (testRun.PassedCount == 0 && computedPassed > 0)
+            {
+                testRun.TestCount = computedTotal;
+                testRun.PassedCount = computedPassed;
+                testRun.FailedCount = computedFailed;
+                testRun.SkippedCount = computedSkipped;
+            }
         }
     }
 

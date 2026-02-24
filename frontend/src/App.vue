@@ -21,8 +21,10 @@
   text-decoration: none;
 }
 .app-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
 }
 </style>

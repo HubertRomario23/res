@@ -23,6 +23,7 @@ public static class TestRunMapper
             RawJson = "",  // Excluded from API responses — too large
             ArchivePath = entity.ArchivePath,
             CreatedAt = entity.CreatedAt,
+            SpecflowLog = entity.SpecflowLog,
             IndexedResults = entity.IndexedResults.Select(r => new TestResultDto
             {
                 Id = r.Id,

@@ -9,3 +9,4 @@ C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\ne
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\refint\ResultViewer.Domain.dll
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ResultViewer.Domain.pdb
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ref\ResultViewer.Domain.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Domain\obj\Debug\net8.0\ResultViewer.Domain.sourcelink.json

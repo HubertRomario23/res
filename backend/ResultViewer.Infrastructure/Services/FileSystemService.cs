@@ -113,7 +113,21 @@ public sealed class FileSystemService : IFileSystemService
             _logger.LogDebug("SystemFingerPrint.xml not found at {FilePath}", fingerPrintFile);
         }
 
-        return new RawRunData(testResultXml, systemInfoXml, fingerPrintXml);
+        // Step 5: Load SpecflowLogging.log (optional)
+        string? specflowLog = null;
+        var specflowLogFile = Path.Combine(testOutputDir, "SpecflowLogging.log");
+        if (File.Exists(specflowLogFile))
+        {
+            _logger.LogInformation("Loading SpecflowLogging.log from {FilePath}", specflowLogFile);
+            specflowLog = await File.ReadAllTextAsync(specflowLogFile, ct);
+            _logger.LogInformation("Loaded SpecflowLogging.log ({Length} chars)", specflowLog.Length);
+        }
+        else
+        {
+            _logger.LogDebug("SpecflowLogging.log not found at {FilePath}", specflowLogFile);
+        }
+
+        return new RawRunData(testResultXml, systemInfoXml, fingerPrintXml, specflowLog);
     }
 
     public async Task ArchiveAsync(string host, string pdc, string runId, CancellationToken ct = default)
@@ -134,10 +148,8 @@ public sealed class FileSystemService : IFileSystemService
 
         await Task.Run(() => ZipFile.CreateFromDirectory(sourceDir, archivePath, CompressionLevel.Optimal, false), ct);
 
-        _logger.LogInformation("Archive complete: {ArchivePath}. Removing source directory.", archivePath);
+        _logger.LogInformation("Archive complete: {ArchivePath}. Source directory preserved.", archivePath);
 
-        // Move semantics: delete the source after successful archive
-        Directory.Delete(sourceDir, recursive: true);
-        _logger.LogInformation("Source directory deleted after archive: {SourceDir}", sourceDir);
+        // Note: Source directory is now preserved (not deleted) to allow re-reading if needed
     }
 }

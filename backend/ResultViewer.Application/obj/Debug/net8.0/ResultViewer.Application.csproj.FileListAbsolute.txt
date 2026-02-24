@@ -13,3 +13,4 @@ C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Deb
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\refint\ResultViewer.Application.dll
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.pdb
 C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ref\ResultViewer.Application.dll
+C:\Users\320296799\Desktop\resultviewer\backend\ResultViewer.Application\obj\Debug\net8.0\ResultViewer.Application.sourcelink.json
